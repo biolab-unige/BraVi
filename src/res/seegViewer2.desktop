@@ -1,0 +1,15 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=seegViewer
+Name=seegViewer
+GenericName=Stereo-EEG Electrode Viewer (2nd screen)
+GenericName[it]=Visualizzatore Elettrodi Stereo-EEG (2° schermo)
+Comment=Copyright Danz, BioLab DIST
+Comment[it]=Copyright Danz, BioLab DIST
+Exec=DISPLAY=:0.1 seegViewer
+Icon=seegViewer
+Terminal=false
+Type=Application
+Categories=QT;ITK;VTK;Imaging;Graphics;Danz;
+StartupNotify=true
+X-Ubuntu-Gettext-Domain=seegViewer
