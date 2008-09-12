@@ -163,6 +163,7 @@ bool electrodeAxisExtractionFilter::Execute( void )
 		sort(small_sort.begin(),small_sort.end());
 #endif
         double d_s = small_sort[small_sort.size()-10];
+        std::cout << "d_s = " << d_s << std::endl;
 
         VectorValueType big_sort = big;
 #ifdef WIN32
@@ -171,6 +172,7 @@ bool electrodeAxisExtractionFilter::Execute( void )
         sort(big_sort.begin(),big_sort.end());
 #endif
         double d_b = big_sort[10];
+        std::cout << "d_b = " << d_s << std::endl;
 
         VectorValueType::iterator iter_small;
         VectorValueType::iterator iter_big;
@@ -356,7 +358,7 @@ electrodeAxisExtractionFilter::VectorType electrodeAxisExtractionFilter::findMax
     VectorType maxIndexVector;
     ImageType::ValueType currValue;
     ImageType::ValueType maxValue = 0;
-    int countMax = 0;
+    //int countMax = 0;
 
 
     typedef itk::ImageRegionConstIteratorWithIndex< ImageType > IteratorType;
@@ -420,7 +422,7 @@ electrodeAxisExtractionFilter::VectorValueType electrodeAxisExtractionFilter::me
 
         for (it.GoToBegin(); !it.IsAtEnd(); ++it)
         {
-            for (int i = 0; i < neighborhoodSize; ++i)
+            for (unsigned int i = 0; i < neighborhoodSize; ++i)
             {
                 sum += static_cast<ValueType>( it.GetPixel(i) );
             }

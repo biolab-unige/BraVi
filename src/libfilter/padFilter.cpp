@@ -76,9 +76,9 @@ bool padFilter::Execute( void )
         output.Set(input.Get());
 
         index = input.GetIndex();
-        for (int i = 0; i < Dimension; i++)
+        for (unsigned int i = 0; i < Dimension; i++)
         {
-            if (index[i] < m_PadSize || index[i] > size[i] - 1 - m_PadSize )
+            if (index[i] < m_PadSize || index[i] > (unsigned int)(size[i] - 1 - m_PadSize) )
             {
                 output.Set( m_PadReplaceValue);
                 break;
