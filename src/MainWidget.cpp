@@ -923,6 +923,9 @@ void MainWidget::loadVolume()
     if (isVolumeLoaded)
       CloseVolume();
 
+    // Se non abbiamo un valido OpenGL context viene creato
+    RenderAll();
+
     // Legge l'immagine
     vtkGenericMedicalImageReader* reader = vtkGenericMedicalImageReader::New();
     if (dialog.useDirectory())
@@ -935,15 +938,18 @@ void MainWidget::loadVolume()
 
     m_Volume3DActor_volume = Volume3DActor::New();
     m_Volume3DActor_volume->SetInput ( reader->GetOutput() );
+
+    m_VolumeMapper_volume = vtkVolumeMapper::SafeDownCast ( m_Volume3DActor_volume->GetMapper() );
+    if ( m_VolumeMapper_volume == NULL )
+      std::cerr << "ERROR: if ((m_VolumeMapper_volume = NULL)" << std::endl;
+
+
     m_OutlineActor_volume = boxActor ( reader->GetOutput() );
     m_OutlineActor_volume->PokeMatrix(m_Volume3DActor_volume->GetMatrix());
 
     m_Rend_volume->AddActor ( m_Volume3DActor_volume );
     m_Rend_volume->AddActor ( m_OutlineActor_volume );
 
-    m_VolumeMapper_volume = vtkVolumeMapper::SafeDownCast ( m_Volume3DActor_volume->GetMapper() );
-    if ( m_VolumeMapper_volume == NULL )
-      std::cerr << "ERROR: if ((m_VolumeMapper_volume = NULL)" << std::endl;
 
     m_VolumeMapper_volume->GetBounds ( m_VolumeBounds );
     m_VolumeMapper_volume->CroppingOn();
