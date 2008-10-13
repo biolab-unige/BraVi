@@ -11,7 +11,7 @@
 //
 
 
-//#define __DECIMATE__
+#define __DECIMATE__
 //#define __WIREFRAME__
 
 
@@ -152,10 +152,14 @@ void Surface3DActor::setColor(ColorType cType)
             break;
     }
     GetProperty()->SetDiffuseColor(color[0], color[1], color[2]);
-//    GetProperty()->SetSpecular(.3);
-//    GetProperty()->SetSpecularPower(20);
     GetProperty()->SetSpecular(specular);
     GetProperty()->SetSpecularPower(specularPower);
 }
 
+void Surface3DActor::setCustomColor(float color0, float color1, float color2, float specular, float specularPower)
 
+{
+    GetProperty()->SetDiffuseColor(color0, color1, color2);
+    GetProperty()->SetSpecular(specular);
+    GetProperty()->SetSpecularPower(specularPower);
+}

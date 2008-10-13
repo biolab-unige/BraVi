@@ -43,11 +43,11 @@ MainWidget::MainWidget ( QWidget *parent ) :
   isVolumeLoaded(false),
   isOrientationMarkerLoaded(false)
 {
-#ifndef SV_DICEVIEWER
+#ifdef SV_DANZ
   setWindowTitle("Inchinati dinnanzi alla potenza di seegViewer");
-#else // SV_DICEVIEWER
+#else // SV_DANZ
   setWindowTitle("SeegViewer");
-#endif // SV_DICEVIEWER
+#endif // SV_DANZ
 
   QFont font("Arial", 7);
   setFont(font);
