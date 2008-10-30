@@ -69,7 +69,6 @@ void SurfaceWidget::connectWidgets()
  */
 void SurfaceWidget::disconnectWidgets()
 {
-  disconnectMenu();
   disconnectValueWidgets();
   disconnectRepresentationWidgets();
   disconnectColorWidgets();
