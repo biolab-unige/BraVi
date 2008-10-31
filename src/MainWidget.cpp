@@ -1468,13 +1468,14 @@ void MainWidget::CloseAll()
 
     for(int i=0; i<NUM_SURFACES; i++)
       m_SurfaceWidget[i]->closeSurface();
-
+/*
     if (isOrientationMarkerLoaded)
     {
         m_OrientationMarker_volume->Delete();
         m_OrientationMarker_volume = NULL;
         isOrientationMarkerLoaded = false;
     }
+*/
 }
 
 
