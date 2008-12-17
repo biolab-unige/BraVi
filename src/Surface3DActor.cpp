@@ -108,31 +108,26 @@ void Surface3DActor::setSurface(int surf)
 
 void Surface3DActor::setColor(ColorType cType)
 {
-    double color[3];
-    double specular;
-    double specularPower;
+    float color[3];
+    float specular = 0.5;
+    float specularPower = 2;
+    float opacity = 1.0;
     switch (cType)
     {
         case COLOR_RED:
             color[0] = 1.0;
             color[1] = 0.0;
             color[2] = 0.0;
-            specular = 0.5;
-            specularPower = 2;
             break;
         case COLOR_GREEN:
             color[0] = 0.0;
             color[1] = 1.0;
             color[2] = 0.0;
-            specular = 0.5;
-            specularPower = 2;
             break;
         case COLOR_BLUE:
             color[0] = 0.0;
             color[1] = 0.0;
             color[2] = 1.0;
-            specular = 0.5;
-            specularPower = 2;
             break;
         case COLOR_SKIN:
             color[0] = 0.9;
@@ -148,12 +143,23 @@ void Surface3DActor::setColor(ColorType cType)
             specular = 0.3;
             specularPower = 20;
             break;
+        case COLOR_GLASS:
+            color[0] = 0.8;
+            color[1] = 1.0;
+            color[2] = 1.0;
+            specular = 0.1;
+            opacity = 0.2;
+GetProperty()->BackfaceCullingOn();
+GetProperty()->FrontfaceCullingOn();
+
+            break;
         default:
             break;
     }
     GetProperty()->SetDiffuseColor(color[0], color[1], color[2]);
     GetProperty()->SetSpecular(specular);
     GetProperty()->SetSpecularPower(specularPower);
+    GetProperty()->SetOpacity(opacity);
 }
 
 void Surface3DActor::setCustomColor(float color0, float color1, float color2, float specular, float specularPower)

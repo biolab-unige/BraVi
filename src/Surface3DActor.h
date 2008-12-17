@@ -51,7 +51,7 @@ public:
 
     void setSurface(int surf);
 
-    enum ColorType {COLOR_RED = 0, COLOR_GREEN, COLOR_BLUE, COLOR_METAL, COLOR_SKIN};
+    enum ColorType {COLOR_RED = 0, COLOR_GREEN, COLOR_BLUE, COLOR_METAL, COLOR_SKIN, COLOR_GLASS};
     void setColor(ColorType cType);
     void setCustomColor(float color0, float color1, float color2, float specular, float specularPower);
 

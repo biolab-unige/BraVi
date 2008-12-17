@@ -131,8 +131,8 @@ protected:
 
 private:
     vtkMatrix4x4* m_ResliceAxes; ///direzione degli assi e centro
-    vtkLookupTable* m_LookupTable;
     vtkImageReslice* m_ImageReslice;
+    vtkLookupTable* m_LookupTable;
 
     double m_limit[6];
     double m_spacing[3];

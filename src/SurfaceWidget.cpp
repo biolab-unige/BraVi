@@ -340,6 +340,7 @@ void SurfaceWidget::createColorWidgets()
   m_ComboBox_color->addItem( tr("Blue") );
   m_ComboBox_color->addItem( tr("Metal") );
   m_ComboBox_color->addItem( tr("Skin") );
+  m_ComboBox_color->addItem( tr("Glass") );
   m_ComboBox_color->setCurrentIndex(0);
 
   resetColorWidgets();
@@ -403,6 +404,9 @@ void SurfaceWidget::setSurfaceColor(int index)
       break;
     case 4:
       m_Surface3DActor->setColor(Surface3DActor::COLOR_SKIN);
+      break;
+    case 5:
+      m_Surface3DActor->setColor(Surface3DActor::COLOR_GLASS);
       break;
     default:
       break;

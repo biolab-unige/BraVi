@@ -19,7 +19,7 @@
 //#define DEBUG_ALL
 
 
-vtkCxxRevisionMacro(vtkNiftiImageReader, "$Revision: 2.0 $");
+vtkCxxRevisionMacro(vtkNiftiImageReader, "$Revision: 2.1 $");
 vtkStandardNewMacro(vtkNiftiImageReader);
 
 vtkNiftiImageReader::vtkNiftiImageReader()
@@ -250,10 +250,13 @@ void vtkNiftiImageReader::ExecuteData(vtkDataObject *output)
     return;
   }
 
-  if( (data->GetNumberOfPoints() * data->GetScalarSize()) != (nim->nbyper * nim->nvox))
+  unsigned int data_size = data->GetNumberOfPoints() * data->GetScalarSize();
+  unsigned int nim_size = nim->nbyper * nim->nvox;
+
+  if( data_size != nim_size )
   {
     vtkWarningWithObjectMacro(this,
-                              "(data->GetNumberOfPoints() * data->GetScalarSize()) != (nim->nbyper * nim->nvox): "
+                              "data_size != nim_size: "
                               << this->InternalFileName);
   }
 
