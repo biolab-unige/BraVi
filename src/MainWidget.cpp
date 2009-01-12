@@ -65,6 +65,8 @@ MainWidget::MainWidget ( QWidget *parent ) :
   CreateImageViewer();
   CreateMenu(); //Importante! Create menu va chiamata dopo la creazione del layout o la connessione dei segnali causa un segmentation fault
 
+  ReadSettings();
+
   ResetControlsVolume();
   DisableControlsVolume(true);
 
@@ -74,6 +76,8 @@ MainWidget::MainWidget ( QWidget *parent ) :
 
 MainWidget::~MainWidget()
 {
+  WriteSettings();
+
   CloseAll();
 
   m_ImageViewer_axial->Delete();
@@ -2337,6 +2341,31 @@ void MainWidget::registrationApplyRigidTransform()
 }
 
 #endif // SV_DICEVIEWER
+
+
+
+
+
+
+
+void MainWidget::ReadSettings()
+{
+  QSettings settings("BioLab", "SeegViewer");
+
+  QString dir = settings.value("dir", "~").toString();
+  QDir::setCurrent(dir);
+}
+
+void MainWidget::WriteSettings()
+{
+  QSettings settings("BioLab", "SeegViewer");
+  settings.setValue("dir", QDir::currentPath());
+}
+
+
+
+
+
 
 
 /*    ---> BACKGROUND <--

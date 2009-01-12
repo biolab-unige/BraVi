@@ -4,6 +4,9 @@
 #include "config.h"
 
 #include <QMainWindow>
+#include <QCloseEvent>
+#include <QSettings>
+
 #include <QMdiArea>
 #include <QMdiSubWindow>
 #include <QDockWidget>
@@ -328,6 +331,9 @@ private slots:
 #endif // SV_DICEVIEWER
 
 private:
+  void ReadSettings();
+  void WriteSettings();
+
   void CreateMenu();
   void CreateRenderingWidgets();
   void CreateLayout();
