@@ -116,6 +116,14 @@ void MainWidget::CreateMenu()
   m_Action_File_CloseVolume->setStatusTip ( tr ( "Close Volume (Ctrl+C)" ) );
   connect ( m_Action_File_CloseVolume, SIGNAL ( triggered() ), this, SLOT ( CloseVolume() ) );
 
+#ifdef PACSTEST
+  m_Action_File_PACS_Test = new QAction ( tr ( "Test PACS" ), this );
+  connect ( m_Action_File_PACS_Test, SIGNAL ( triggered() ), this, SLOT ( PACSTest() ) );
+
+  m_Menu_File_PACS = new QMenu ( tr ( "PACS" ) );
+  m_Menu_File_PACS->addAction ( m_Action_File_PACS_Test );
+#endif // PACSTEST
+
   m_Action_File_CloseAll = new QAction ( tr ( "Close &All" ), this );
   m_Action_File_CloseAll->setShortcut ( tr ( "Ctrl+A" ) );
   m_Action_File_CloseAll->setStatusTip ( tr ( "Close All (Ctrl+A)" ) );
@@ -131,10 +139,16 @@ void MainWidget::CreateMenu()
   m_Menu_File->addAction ( m_Action_File_CloseVolume );
   m_Menu_File->addSeparator();
 
+
   for(int i=0; i<NUM_SURFACES; i++)
     m_Menu_File->addMenu(m_SurfaceWidget[i]->getMenu());
 
   m_Menu_File->addSeparator();
+
+#ifdef PACSTEST
+  m_Menu_File->addMenu ( m_Menu_File_PACS );
+  m_Menu_File->addSeparator();
+#endif // PACSTEST
 
   m_Menu_File->addAction ( m_Action_File_CloseAll );
   m_Menu_File->addAction ( m_Action_File_Quit );
@@ -2362,7 +2376,15 @@ void MainWidget::WriteSettings()
   settings.setValue("dir", QDir::currentPath());
 }
 
+#ifdef PACSTEST
+#include "PACSQueryDialog.h"
 
+void MainWidget::PACSTest()
+{
+  PACSQueryDialog dialog(this);
+  dialog.exec();
+}
+#endif // PACSTEST
 
 
 

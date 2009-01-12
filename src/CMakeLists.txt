@@ -8,8 +8,8 @@ INCLUDE(${QT_USE_FILE})
 
 
 # Files da processare per le QT4
-SET (QT_SOURCES MainWidget.cpp ReadImageDialog.cpp SurfaceWidget.cpp QVTKSquareWidget.cpp)
-SET (QT_HEADERS MainWidget.h ReadImageDialog.h SurfaceWidget.h QVTKSquareWidget.h)
+SET (QT_SOURCES MainWidget.cpp ReadImageDialog.cpp SurfaceWidget.cpp QVTKSquareWidget.cpp PACSQueryDialog.cpp)
+SET (QT_HEADERS MainWidget.h ReadImageDialog.h SurfaceWidget.h QVTKSquareWidget.h PACSQueryDialog.h)
 SET (QT_RESOURCES resources.qrc)
 
 
