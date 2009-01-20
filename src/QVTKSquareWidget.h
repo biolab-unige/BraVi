@@ -4,7 +4,7 @@
 // Description: 
 //
 //
-// Author: Daniele Domenichelli <daniele.domenichelli@fastwebnet.it>, (C) 2008
+// Author: Daniele Domenichelli <daniele.domenichelli@unige.it>, (C) 2008
 //
 // Copyright: See COPYING file that comes with this distribution
 //
