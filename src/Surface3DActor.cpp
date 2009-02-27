@@ -11,9 +11,9 @@
 //
 
 
+//#define __RELEASE_INPUT__
 //#define __DECIMATE__
 //#define __WIREFRAME__
-
 
 
 #include "Surface3DActor.h"
@@ -25,9 +25,9 @@
 
 #ifdef __DECIMATE__
   #include <vtkDecimatePro.h>
+#endif
   #include <vtkSmoothPolyDataFilter.h>
   #include <vtkPolyDataNormals.h>
-#endif
 
 
 
@@ -56,6 +56,10 @@ void Surface3DActor::SetInput(vtkImageData* input)
 {
     input->GetScalarRange(m_Range);
 
+#ifdef __RELEASE_INPUT__
+    input->ReleaseDataFlagOn();
+#endif // __RELEASE_INPUT__
+
     m_MarchingCubes = vtkMarchingCubes::New();
     m_MarchingCubes->SetInput(input);
     m_MarchingCubes->SetValue(0, m_Range[1]); //Il secondo valore setta la superficie
@@ -70,10 +74,26 @@ void Surface3DActor::SetInput(vtkImageData* input)
     decimate->SetInputConnection(m_MarchingCubes->GetOutputPort());
     decimate->SetTargetReduction(0.4);
     decimate->PreserveTopologyOn();
+#endif
+
 
     vtkSmoothPolyDataFilter* smoother = vtkSmoothPolyDataFilter::New();
+
+#ifdef __DECIMATE__
     smoother->SetInputConnection(decimate->GetOutputPort());
-    smoother->SetNumberOfIterations(50);
+#else
+    smoother->SetInputConnection(m_MarchingCubes->GetOutputPort());
+#endif
+
+    smoother->Print(std::cout);
+
+    smoother->SetNumberOfIterations(20);
+    smoother->SetFeatureAngle(60);
+//    smoother->SetEdgeAngle(5);
+    smoother->SetRelaxationFactor(0.25);
+//    smoother->FeatureEdgeSmoothingOn();
+//    smoother->BoundarySmoothingOn();
+
 
     vtkPolyDataNormals* normals = vtkPolyDataNormals::New();
     normals->SetInputConnection(smoother->GetOutputPort());
@@ -81,12 +101,13 @@ void Surface3DActor::SetInput(vtkImageData* input)
 
     SurfMapper->SetInputConnection(normals->GetOutputPort());
 
+#ifdef __DECIMATE__
     decimate->Delete();
+#endif
     smoother->Delete();
     normals->Delete();
-#else
-    SurfMapper->SetInputConnection(m_MarchingCubes->GetOutputPort());
-#endif
+
+
 
     SurfMapper->ScalarVisibilityOff();
 
