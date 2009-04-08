@@ -36,10 +36,11 @@ fileFilterIOWidget::fileFilterIOWidget(IOMode mode)
         m_FileDialog = new QFileDialog(this);
 
         QStringList filters;
-        filters << tr( "All Supported Files (*.dcm *.hdr *.nii *.nii.gz)" )
+        filters << tr( "All Supported Files (*.dcm *.hdr *.nii *.nii.gz *.mhd)" )
                 << tr( "Dicom Files (*.dcm)" )
                 << tr( "Analyze Files (*.hdr)" )
                 << tr( "Nifti Files (*.nii *.nii.gz *.hdr)" )
+                << tr( "MetaIO Files (*.mhd)" )
                 << tr( "Any Files (*)" );
         m_FileDialog->setFilters( filters );
         m_FileDialog->setViewMode(QFileDialog::Detail);
