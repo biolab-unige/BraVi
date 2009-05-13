@@ -43,11 +43,7 @@ MainWidget::MainWidget ( QWidget *parent ) :
   isVolumeLoaded(false),
   isOrientationMarkerLoaded(false)
 {
-#ifdef SV_DANZ
-  setWindowTitle("Inchinati dinnanzi alla potenza di seegViewer");
-#else // SV_DANZ
-  setWindowTitle("SeegViewer");
-#endif // SV_DANZ
+  setWindowTitle("XTENS Viewer");
 
   QFont font("Arial", 7);
   setFont(font);
@@ -890,15 +886,6 @@ void MainWidget::CreateLayout()
 
 
   statusBar()->showMessage("");
-
-#ifdef SV_DANZ
-  QLabel* danz = new QLabel("Danz" );
-  QFont danzFont("Helvetica", 6, QFont::StyleItalic);
-  danz->setFont(danzFont);
-  danz->setAlignment(Qt::AlignRight|Qt::AlignBottom);
-  danz->setDisabled(true);
-  statusBar()->addPermanentWidget ( danz );
-#endif //SV_DANZ
 }
 
 void MainWidget::CreateImageViewer()
@@ -2364,7 +2351,7 @@ void MainWidget::registrationApplyRigidTransform()
 
 void MainWidget::ReadSettings()
 {
-  QSettings settings("BioLab", "SeegViewer");
+  QSettings settings("BioLab", "xtensViewer");
 
   QString dir = settings.value("dir", "~").toString();
   QDir::setCurrent(dir);
@@ -2372,7 +2359,7 @@ void MainWidget::ReadSettings()
 
 void MainWidget::WriteSettings()
 {
-  QSettings settings("BioLab", "SeegViewer");
+  QSettings settings("BioLab", "xtensViewer");
   settings.setValue("dir", QDir::currentPath());
 }
 

@@ -1,13 +1,13 @@
-SET (FILTERS_QT_HEADERS filterDialog.h
+set (FILTERS_QT_HEADERS filterDialog.h
                         filterIOWidget.h
                         fileFilterIOWidget.h
                         vtkFilterIOWidget.h )
 
-SET (FILTERS_QT_SOURCES filterDialog.cpp
+set (FILTERS_QT_SOURCES filterDialog.cpp
                         fileFilterIOWidget.cpp
                         vtkFilterIOWidget.cpp )
 
-SET (FILTERS_HEADERS    reader.h
+set (FILTERS_HEADERS    reader.h
                         filterParameter.h
                         filterInput.h
                         filterOutput.h
@@ -44,7 +44,7 @@ SET (FILTERS_HEADERS    reader.h
                         skelInsertFilter.h
                         ${FILTERS_QT_HEADERS} )
 
-SET (FILTERS_SOURCES    reader.cpp
+set (FILTERS_SOURCES    reader.cpp
                         applyRigidTransformFilter.cpp
                         betFilter.cpp
                         binaryDilateFilter.cpp
@@ -79,11 +79,11 @@ SET (FILTERS_SOURCES    reader.cpp
 
 
 
-QT4_WRAP_CPP( FILTERS_MOC_FILES ${FILTERS_QT_HEADERS} )
+qt4_wrap_cpp( FILTERS_MOC_FILES ${FILTERS_QT_HEADERS} )
 
-SET (LIBFILTER_SOURCES  ${FILTERS_HEADERS}
+set (LIBFILTER_SOURCES  ${FILTERS_HEADERS}
                         ${FILTERS_SOURCES}
                         ${FILTERS_MOC_FILES} )
 
-ADD_LIBRARY(filter ${LIBFILTER_SOURCES} )
-TARGET_LINK_LIBRARIES(filter ${QT_LIBRARIES} ${ITK_LIBRARIES})
+add_library(filter ${LIBFILTER_SOURCES} )
+target_link_libraries(filter ${QT_LIBRARIES} ${ITK_LIBRARIES})

@@ -17,7 +17,6 @@
 
 #cmakedefine SV_DICEVIEWER                      // versione senza filtri e con interfaccia fissa 
 #cmakedefine SV_SIMPLEINTERFACE                 // interfaccia fissa
-#cmakedefine SV_DANZ                            // label "Danz"
 
 
 #cmakedefine SV_SLICECONTROLS_2COL              // controlli slice su 2 colonne

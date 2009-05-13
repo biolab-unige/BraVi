@@ -1,6 +1,6 @@
 <!DOCTYPE RCC><RCC version="1.0">
 <qresource>
-    <file>res/seegViewer.png</file>
-    <file>res/seegViewerSplash.png</file>
+    <file>res/xtensViewer.png</file>
+    <file>res/xtensViewerSplash.png</file>
 </qresource>
 </RCC>
