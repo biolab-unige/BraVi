@@ -46,6 +46,15 @@ int main (int argc, char **argv)
 
   MainWidget* mainWidget = new MainWidget();
   mainWidget->setWindowIcon(QIcon(":/res/xtensViewer.png"));
+
+//TODO
+//WARNING
+//DANGER
+  if (argc ==2)
+    mainWidget->loadOnStart(argv[1]);
+
+
+
   mainWidget->show();
 
   splash->finish(mainWidget);

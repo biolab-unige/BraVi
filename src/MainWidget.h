@@ -40,6 +40,7 @@
 
 
 #define PACSTEST
+#include "vtkGenericMedicalImageReader.h"
 
 class vtkGenericMedicalImageReader;
 
@@ -50,6 +51,8 @@ class MainWidget : public QMainWindow
 public:
   MainWidget(QWidget *parent = 0);
   ~MainWidget();
+
+  bool loadOnStart(std::string filename);
 
 private:
 
@@ -343,6 +346,8 @@ private slots:
 #endif // SV_DICEVIEWER
 
 private:
+  bool readVolume(vtkImageType imageType, std::string filename, bool isDirectory = false);
+
   void ReadSettings();
   void WriteSettings();
 

@@ -98,6 +98,48 @@ MainWidget::~MainWidget()
     delete m_RenderingWidget_slice;
 }
 
+bool MainWidget::loadOnStart(std::string filename)
+{
+
+    QString fileName = QString(filename.c_str());
+    vtkImageType ImageType;
+    if ( fileName.endsWith(".nii", Qt::CaseInsensitive) || fileName.endsWith(".nii.gz", Qt::CaseInsensitive) || fileName.endsWith(".hdr", Qt::CaseInsensitive) )
+        ImageType = NIFTI_IMAGE;
+    else if ( fileName.endsWith(".mhd", Qt::CaseInsensitive) )
+        ImageType = META_IMAGE;
+    else if ( fileName.endsWith(".dcm", Qt::CaseInsensitive) )
+        ImageType = DICOM_IMAGE;
+    /// \todo eseguire qualche controllo in più
+    else
+        ImageType = DICOM_IMAGE;
+
+    bool isDirectory;
+
+    switch (ImageType)
+    {
+        case NIFTI_IMAGE:
+        case META_IMAGE:
+            isDirectory = false;
+            break;
+        case DICOM_IMAGE:
+            isDirectory = true;
+            break;
+        default:
+            isDirectory = true;
+            break;
+    }
+
+    // Non abbiamo un valido OpenGL context, quindi viene creato
+    RenderAll();
+
+    bool load_ok = readVolume(ImageType, filename, isDirectory);
+
+    if(!load_ok)
+        std::cerr << "ERROR: !load_ok in loadOnStart" << std::endl;
+
+    return load_ok;
+}
+
 
 /// Crea il menu dell'applicazione
 void MainWidget::CreateMenu()
@@ -931,13 +973,28 @@ void MainWidget::loadVolume()
     // Se non abbiamo un valido OpenGL context viene creato
     RenderAll();
 
+    bool load_ok = false;
+
+    if (dialog.useDirectory())
+        load_ok = readVolume(dialog.getImageType(), dialog.getDirectory(), true);
+    else
+        load_ok = readVolume(dialog.getImageType(), dialog.getFilename());
+
+    if(!load_ok)
+        std::cerr << "ERROR: !load_ok" << std::endl;
+    }
+}
+
+bool MainWidget::readVolume(vtkImageType imageType, std::string filename, bool isDirectory)
+{
     // Legge l'immagine
     vtkGenericMedicalImageReader* reader = vtkGenericMedicalImageReader::New();
-    if (dialog.useDirectory())
-      reader->SetDirectoryName(dialog.getDirectory().c_str());
+
+    if(isDirectory)
+      reader->SetDirectoryName(filename.c_str());
     else
-      reader->SetFileName (dialog.getFilename().c_str());
-    reader->SetImageType(dialog.getImageType());
+      reader->SetFileName (filename.c_str());
+    reader->SetImageType(imageType);
 
     reader->Update();
 
@@ -1147,7 +1204,7 @@ void MainWidget::loadVolume()
     showOrientationMarker();
     RenderAll();
     reader->Delete();
-  }
+    return true;
 }
 
 
