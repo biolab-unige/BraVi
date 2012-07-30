@@ -12,22 +12,6 @@ set(PATCH_VERSION 0)
 set(VERSION ${MAJOR_VERSION}.${MINOR_VERSION}.${PATCH_VERSION})
 
 
-if(UNIX)
-  if(APPLE)
-    set(GUI "Cocoa")
-  else(APPLE)
-    set(GUI "X11")
-  endif(APPLE)
-else(UNIX)
-  if(WIN32)
-    set(GUI "Win32")
-  else(WIN32)
-    set(GUI "Unknown")
-  endif(WIN32)
-endif(UNIX)
-message(STATUS "GUI system is ${GUI}")
-
-
 find_package(VTK REQUIRED)
 if(VTK_FOUND)
   include(${VTK_USE_FILE})
