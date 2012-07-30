@@ -43,7 +43,7 @@ MainWidget::MainWidget ( QWidget *parent ) :
   isVolumeLoaded(false),
   isOrientationMarkerLoaded(false)
 {
-  setWindowTitle("XTENS Viewer");
+  setWindowTitle("Brain Viewer");
 
   QFont font("Arial", 7);
   setFont(font);
@@ -2408,7 +2408,7 @@ void MainWidget::registrationApplyRigidTransform()
 
 void MainWidget::ReadSettings()
 {
-  QSettings settings("BioLab", "xtensViewer");
+  QSettings settings("BioLab", "BraVi");
 
   QString dir = settings.value("dir", "~").toString();
   QDir::setCurrent(dir);
@@ -2416,7 +2416,7 @@ void MainWidget::ReadSettings()
 
 void MainWidget::WriteSettings()
 {
-  QSettings settings("BioLab", "xtensViewer");
+  QSettings settings("BioLab", "BraVi");
   settings.setValue("dir", QDir::currentPath());
 }
 

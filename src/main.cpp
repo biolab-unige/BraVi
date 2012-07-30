@@ -29,7 +29,7 @@ int main (int argc, char **argv)
 
   QDir::setCurrent(QDir::homePath());
 
-  QPixmap pixmap(":/res/xtensViewerSplash.png");
+  QPixmap pixmap(":/res/BraViSplash.png");
   QSplashScreen* splash = new QSplashScreen(pixmap);
   splash->setMask(pixmap.mask());
   splash->show();
@@ -45,7 +45,7 @@ int main (int argc, char **argv)
 #endif // SV_FASTLOAD
 
   MainWidget* mainWidget = new MainWidget();
-  mainWidget->setWindowIcon(QIcon(":/res/xtensViewer.png"));
+  mainWidget->setWindowIcon(QIcon(":/res/BraVi.png"));
 
 //TODO
 //WARNING

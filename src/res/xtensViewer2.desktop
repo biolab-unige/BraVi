@@ -1,15 +1,15 @@
 [Desktop Entry]
 Encoding=UTF-8
-Name=xtensViewer
-Name=xtensViewer
-GenericName=XTENS Viewer (2nd screen)
-GenericName[it]=XTENS Viewer (2° schermo)
+Name=BraVi
+Name=BraVi
+GenericName=Brain Viewer (2nd screen)
+GenericName[it]=Brain Viewer (2° schermo)
 Comment=Copyright Daniele E. Domenichelli, BioLab DIST
 Comment[it]=Copyright Daniele E. Domenichelli, BioLab DIST
-Exec=DISPLAY=:0.1 xtensViewer
-Icon=xtensViewer
+Exec=DISPLAY=:0.1 BraVi
+Icon=BraVi
 Terminal=false
 Type=Application
 Categories=QT;ITK;VTK;Imaging;Graphics;
 StartupNotify=true
-X-Ubuntu-Gettext-Domain=xtensViewer
+X-Ubuntu-Gettext-Domain=BraVi
