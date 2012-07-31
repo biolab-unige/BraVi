@@ -84,6 +84,7 @@ void Volume3DActor::SetInput(vtkImageData* input)
   mapper->SetInputConnection(rescaler->GetOutputPort());
   this->SetMapper(mapper);
 
+#if 0
   if( !(vtkVolumeTextureMapper3D::SafeDownCast(mapper)->IsRenderSupported(this->GetProperty())) )
   {
       vtkDebugMacro("Texture3D not supported. Switching to Software Ray Tracing");
@@ -125,6 +126,7 @@ void Volume3DActor::SetInput(vtkImageData* input)
       compositeFunction->Delete();
 */
   }
+#endif //0
   mapper->Delete();
   rescaler->Delete();
 }
