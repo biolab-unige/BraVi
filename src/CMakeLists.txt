@@ -6,8 +6,14 @@ include(${QT_USE_FILE})
 
 
 # Files da processare per le QT4
-set(QT_SOURCES MainWidget.cpp ReadImageDialog.cpp SurfaceWidget.cpp QVTKSquareWidget.cpp PACSQueryDialog.cpp)
-set(QT_HEADERS MainWidget.h ReadImageDialog.h SurfaceWidget.h QVTKSquareWidget.h PACSQueryDialog.h)
+set(QT_SOURCES MainWidget.cpp
+               ReadImageDialog.cpp
+               SurfaceWidget.cpp
+               QVTKSquareWidget.cpp)
+set(QT_HEADERS MainWidget.h
+               ReadImageDialog.h
+               SurfaceWidget.h
+               QVTKSquareWidget.h)
 set(QT_RESOURCES resources.qrc)
 
 

@@ -39,7 +39,6 @@
 #endif
 
 
-#define PACSTEST
 #include "vtkGenericMedicalImageReader.h"
 
 class vtkGenericMedicalImageReader;
@@ -192,14 +191,6 @@ private:
   QAction* m_Action_File_LoadSurface3;
 #endif // SV_3_SURFACES
 */
-
-#ifdef PACSTEST
-  QMenu*   m_Menu_File_PACS;
-  QAction* m_Action_File_PACS_Test;
-private slots:
-  void PACSTest();
-private:
-#endif // PACSTEST
 
 
   QAction* m_Action_File_CloseVolume;
