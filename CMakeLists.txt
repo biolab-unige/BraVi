@@ -18,12 +18,6 @@ if(VTK_FOUND)
   message(STATUS "VTK Ok!")
 endif(VTK_FOUND)
 
-find_package(ITK REQUIRED)
-if(ITK_FOUND)
-  include(${ITK_USE_FILE})
-  message(STATUS "ITK Ok!")
-endif(ITK_FOUND)
-
 set(QT_MIN_VERSION 4.5.0)
 find_package(Qt4 REQUIRED)
 if(QT4_FOUND)

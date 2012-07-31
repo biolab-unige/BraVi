@@ -1,5 +1,3 @@
-add_subdirectory(libfilter)
-
 include_directories(BEFORE ${CMAKE_BINARY_DIR})
 
 # QT4 options
@@ -39,11 +37,7 @@ set(HEADERS ${CMAKE_BINARY_DIR}/config.h;
 
 # Librerie all'interno del progetto
 set(VTK_LIBRARIES vtkIO vtkVolumeRendering vtkWidgets vtkHybrid QVTK) #VTK
-set(ITK_LIBRARIES ITKCommon ITKIO ITKniftiio ITKBasicFilters) #ITK
-#QT_LIBRARIES è generata automaticamente
-set(PROJECT_LIBRARIES filter) # Aggiungere qua eventuali altre librerie create nel progetto
-
-set(BRAVI_LIBRARIES ${VTK_LIBRARIES} ${ITK_LIBRARIES} ${QT_LIBRARIES} ${NIFTI_LIBRARIES} ${PROJECT_LIBRARIES})
+set(BRAVI_LIBRARIES ${VTK_LIBRARIES} ${QT_LIBRARIES} ${NIFTI_LIBRARIES})
 
 
 if(WIN32)
