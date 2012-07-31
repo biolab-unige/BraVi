@@ -27,7 +27,6 @@ int main (int argc, char **argv)
   Q_INIT_RESOURCE(resources);
 
   QApplication app(argc, argv);
-  app.setStyle(new QPlastiqueStyle);
 
   QDir::setCurrent(QDir::homePath());
 
