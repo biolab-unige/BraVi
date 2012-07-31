@@ -63,6 +63,6 @@ target_link_libraries(BraVi ${BRAVI_LIBRARIES})
 install(TARGETS BraVi RUNTIME DESTINATION bin)
 
 if(UNIX)
-  install(FILES res/BraVi.png  DESTINATION share/icons)
-  install(FILES res/BraVi.desktop res/BraVi2.desktop DESTINATION share/applications)
+  install(FILES res/BraVi.png DESTINATION share/icons)
+  install(FILES res/BraVi.desktop DESTINATION share/applications)
 endif(UNIX)
