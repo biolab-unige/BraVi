@@ -15,6 +15,8 @@
 //Header per windows - contengono Sleep()
   #include <windows.h>
   #include <winbase.h>
+#else
+  #include <unistd.h>
 #endif // #ifdef WIN32
 
 
