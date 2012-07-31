@@ -32,6 +32,24 @@ if(QT4_FOUND)
   include_directories(${QT_INCLUDE_DIR})
 endif(QT4_FOUND)
 
+# TODO FindNifti1.cmake
+find_path(NIFTI_INCLUDE_DIRECTORIES nifti1_io.h
+          HINTS /usr/include
+                /usr/local/include
+                /usr/include/nifti
+                /usr/local/include/nifti)
+find_library(NIFTI_IO_LIBRARY niftiio
+             HINTS /usr/lib
+                   /usr/local/lib)
+
+if(NIFTI_INCLUDE_DIRECTORIES AND NIFTI_IO_LIBRARY)
+    message(STATUS "Nifti Ok!")
+    include_directories(${NIFTI_INCLUDE_DIRECTORIES})
+    set(NIFTI_LIBRARIES ${NIFTI_IO_LIBRARY})
+else(NIFTI_INCLUDE_DIRECTORIES AND NIFTI_IO_LIBRARY)
+    message(FATAL_ERROR "Nifti library not found")
+endif(NIFTI_INCLUDE_DIRECTORIES AND NIFTI_IO_LIBRARY)
+
 if(WIN32)
   option(SV_DICEVIEWER "Compile only the basic viewer without filters support" ON)
   option(SV_NEUROLOGICALCONVENTION "Use neurological convention instead of radiological convention" OFF)

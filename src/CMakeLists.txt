@@ -43,7 +43,7 @@ set(ITK_LIBRARIES ITKCommon ITKIO ITKniftiio ITKBasicFilters) #ITK
 #QT_LIBRARIES è generata automaticamente
 set(PROJECT_LIBRARIES filter) # Aggiungere qua eventuali altre librerie create nel progetto
 
-set(BRAVI_LIBRARIES ${VTK_LIBRARIES} ${ITK_LIBRARIES} ${QT_LIBRARIES} ${PROJECT_LIBRARIES} )
+set(BRAVI_LIBRARIES ${VTK_LIBRARIES} ${ITK_LIBRARIES} ${QT_LIBRARIES} ${NIFTI_LIBRARIES} ${PROJECT_LIBRARIES})
 
 
 if(WIN32)
